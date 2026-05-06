@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Inicio</h1>
-    <p>{{ mensaje }}</p>
-    <a href="{% url 'publicaciones:lista_publicaciones' %}">Ver publicaciones</a>
+    <div class="welcome">
+        <h1>{{ titulo }}</h1>
+        <p>{{ mensaje }}</p>
+        <a href="{% url 'publicaciones:lista_publicaciones' %}" class="btn btn-primary">Ver publicaciones</a>
+    </div>
 {% endblock %}

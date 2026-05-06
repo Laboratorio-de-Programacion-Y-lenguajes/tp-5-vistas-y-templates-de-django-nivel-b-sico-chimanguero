@@ -2,14 +2,127 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Publicaciones</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f4f6f9;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 1.2rem 2rem;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            background: #16213e;
+            padding: 0.6rem 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #a8b8d8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #fff; }
+
+        main {
+            flex: 1;
+            max-width: 860px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: #666;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* Cards */
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .card h2 { font-size: 1.15rem; margin-bottom: 0.4rem; color: #1a1a2e; }
+        .card .meta { font-size: 0.85rem; color: #777; margin-bottom: 0.8rem; }
+
+        /* Botones / links estilizados */
+        .btn {
+            display: inline-block;
+            padding: 0.45rem 1.1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-primary { background: #1a1a2e; color: #fff; }
+        .btn-primary:hover { background: #16213e; }
+        .btn-secondary { background: #e8ecf3; color: #333; }
+        .btn-secondary:hover { background: #d0d8e8; }
+
+        /* Página inicio */
+        .welcome {
+            background: #fff;
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .welcome h1 { font-size: 2rem; color: #1a1a2e; margin-bottom: 0.8rem; }
+        .welcome p  { color: #555; margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        /* Detalle */
+        .detalle-header { margin-bottom: 1.2rem; }
+        .detalle-header h1 { font-size: 1.6rem; color: #1a1a2e; }
+        .detalle-body {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.6rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            line-height: 1.7;
+            color: #333;
+        }
+        .detalle-meta { font-size: 0.88rem; color: #777; margin-bottom: 1.2rem; }
+
+        /* Sin publicaciones */
+        .empty { color: #888; font-style: italic; padding: 1rem 0; }
+    </style>
 </head>
 <body>
     <header>
-        <h1>{{ titulo }}</h1>
+        <h1>Portal de Publicaciones</h1>
     </header>
     <nav>
-        <a href="{% url 'publicaciones:inicio' %}">Inicio</a> |
+        <a href="{% url 'publicaciones:inicio' %}">Inicio</a>
         <a href="{% url 'publicaciones:lista_publicaciones' %}">Publicaciones</a>
     </nav>
     <main>
@@ -17,7 +130,7 @@
         {% endblock %}
     </main>
     <footer>
-        <p>TP5 - Laboratorio de Programación y Lenguajes</p>
+        <p>TP5 · Laboratorio de Programación y Lenguajes</p>
     </footer>
 </body>
 </html>

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Publicaciones</h1>
+    <h1 style="margin-bottom:1.2rem; color:#1a1a2e;">Publicaciones</h1>
     {% for pub in publicacion_list %}
-        <div>
+        <div class="card">
             <h2>{{ pub.titulo }}</h2>
-            <p>{{ pub.autor }} — {{ pub.fecha_publicacion }}</p>
-            <a href="{% url 'publicaciones:detalle_publicacion' pub.pk %}">Ver detalle</a>
+            <p class="meta">{{ pub.autor }} &middot; {{ pub.fecha_publicacion }}</p>
+            <a href="{% url 'publicaciones:detalle_publicacion' pub.pk %}" class="btn btn-primary">Ver detalle</a>
         </div>
     {% empty %}
-        <p>No hay publicaciones disponibles aún.</p>
+        <p class="empty">No hay publicaciones disponibles aún.</p>
     {% endfor %}
 {% endblock %}
