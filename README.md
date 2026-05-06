@@ -167,15 +167,15 @@ La aplicación representará un pequeño portal de publicaciones que permita:
 
 ## 6) Archivos a completar
 
-| Archivo | Qué implementar |
-|--------|------------------|
-| `portal/urls.py` | Incluir las rutas de `publicaciones` con `include()` |
-| `publicaciones/views.py` | `InicioView`, `PublicacionListView`, `PublicacionDetailView` |
-| `publicaciones/urls.py` | Rutas con `path()` y `.as_view()` |
-| `templates/base.html` | Estructura HTML5 + navegación + `{% block content %}` |
-| `templates/publicaciones/inicio.html` | Página de bienvenida extendiendo `base.html` |
-| `templates/publicaciones/publicacion_list.html` | Listado con `{% for %}` extendiendo `base.html` |
-| `templates/publicaciones/publicacion_detail.html` | Detalle extendiendo `base.html` |
+| Archivo                                           | Qué implementar                                               |
+|---------------------------------------------------|---------------------------------------------------------------|
+| `portal/urls.py`                                  | Incluir las rutas de `publicaciones` con `include()`          |
+| `publicaciones/views.py`                          | `InicioView`, `PublicacionListView`, `PublicacionDetailView`  |
+| `publicaciones/urls.py`                           | Rutas con `path()` y `.as_view()`                             |
+| `templates/base.html`                             | Estructura HTML5 + navegación + `{% block content %}`         |
+| `templates/publicaciones/inicio.html`             | Página de bienvenida extendiendo `base.html`                  |
+| `templates/publicaciones/publicacion_list.html`   | Listado con `{% for %}` extendiendo `base.html`               |
+| `templates/publicaciones/publicacion_detail.html` | Detalle extendiendo `base.html`                               |
 
 ---
 
@@ -202,11 +202,11 @@ La aplicación representará un pequeño portal de publicaciones que permita:
 
 ### 7.2 URLs
 
-| URL | Vista | Nombre |
-|-----|------|--------|
-| `/` | `InicioView` | `inicio` |
-| `/publicaciones/` | `PublicacionListView` | `lista_publicaciones` |
-| `/publicaciones/<int:publicacion_id>/` | `PublicacionDetailView` | `detalle_publicacion` |
+| URL                                    | Vista                    | Nombre                |
+|----------------------------------------|--------------------------|-----------------------|
+| `/`                                    | `InicioView`             | `inicio`              |
+| `/publicaciones/`                      | `PublicacionListView`    | `lista_publicaciones` |
+| `/publicaciones/<int:publicacion_id>/` | `PublicacionDetailView`  | `detalle_publicacion` |
 
 Usar `app_name = "publicaciones"` en `publicaciones/urls.py`.
 
@@ -255,13 +255,13 @@ class Publicacion(models.Model):
 
 ## 9) Diferencia clave: FBV vs CBV
 
-| Aspecto | FBV | CBV |
-|---------|-----|-----|
-| Definición | función `def vista(request)` | clase que hereda de una vista genérica |
-| Registro en URL | `views.vista` | `views.MiVista.as_view()` |
-| Lógica extra | todo manual | sobreescribir métodos como `get_context_data()` |
-| Reutilización | copiar código | herencia de clases |
-| Cuándo usar | lógica muy custom | listados, detalles, formularios estándar |
+| Aspecto         | FBV                          | CBV                                             |
+|-----------------|------------------------------|-------------------------------------------------|
+| Definición      | función `def vista(request)` | clase que hereda de una vista genérica          |
+| Registro en URL | `views.vista`                | `views.MiVista.as_view()`                       |
+| Lógica extra    | todo manual                  | sobreescribir métodos como `get_context_data()` |
+| Reutilización   | copiar código                | herencia de clases                              |
+| Cuándo usar     | lógica muy custom            | listados, detalles, formularios estándar        |
 
 ```python
 # FBV equivalente
@@ -375,14 +375,14 @@ Al hacer push a `main`, GitHub Actions:
 
 ## 14) Troubleshooting rápido
 
-| Problema | Solución |
-|----------|----------|
-| `No module named django` | Activá el entorno virtual y corré `pip install -r requirements.txt` |
-| `TemplateDoesNotExist` | Verificá nombre exacto del archivo (convención CBV: `_list`, `_detail`) |
-| `NoReverseMatch` | Revisá `app_name` y `name=` en las rutas |
-| `404` en URL válida | Verificá que `portal/urls.py` incluya las rutas de `publicaciones` |
-| `OperationalError: no such table` | Corré `python manage.py migrate` |
-| Tests fallan por contexto | Revisá `context_object_name` y `pk_url_kwarg` en las CBV |
+| Problema                          | Solución                                                                |
+|-----------------------------------|-------------------------------------------------------------------------|
+| `No module named django`          | Activá el entorno virtual y corré `pip install -r requirements.txt`     |
+| `TemplateDoesNotExist`            | Verificá nombre exacto del archivo (convención CBV: `_list`, `_detail`) |
+| `NoReverseMatch`                  | Revisá `app_name` y `name=` en las rutas                                |
+| `404` en URL válida               | Verificá que `portal/urls.py` incluya las rutas de `publicaciones`      |
+| `OperationalError: no such table` | Corré `python manage.py migrate`                                        |
+| Tests fallan por contexto         | Revisá `context_object_name` y `pk_url_kwarg` en las CBV                |
 
 ---
 
